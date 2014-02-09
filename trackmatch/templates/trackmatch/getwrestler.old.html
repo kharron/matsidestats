@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="/static/css/bootstrap.css" />
+	<body>
+	<div class="container">
+		<div class="row">
+			<form id="wrestler-form" action="/savewrestler/[[ wrestler_id }}/" method="POST" role="form">
+			<div class="input-group">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Team Level <span class="caret"></span></button>
+					<ul class="dropdown-menu" id="teamlevel">
+						<li><a href="#">Freshman</a></li>
+						<li><a href="#">JV</a></li>
+						<li><a href="#">Varsity B</a></li>
+						<li><a href="#">Varsity</a></li>
+					</ul>
+				</div>
+				<input type="text" class="form-control" value="{{ team_level }}" name="teamlevel" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-group">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Weight Class<span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a href="#">106</a></li>
+						<li><a href="#">113</a></li>
+						<li><a href="#">122</a></li>
+						<li><a href="#">128</a></li>
+						<li><a href="#">133</a></li>
+						<li><a href="#">139</a></li>
+						<li><a href="#">145</a></li>
+						<li><a href="#">154</a></li>
+						<li><a href="#">160</a></li>
+						<li><a href="#">171</a></li>
+						<li><a href="#">184</a></li>
+						<li><a href="#">197</a></li>
+						<li><a href="#">220</a></li>
+						<li><a href="#">HWT</a></li>
+					</ul>
+				</div>
+				<input type="text" class="form-control" value="{{ weight }}" name="weight_class" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label for="current_meet">Current Meet/Tourney</label>
+				<input type="text" class="form-control" name="current_meet" value="{{ current_meet }}" placeholder="Enter Current Tournament or Meet" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<button name="save" class="btn btn-primary">SAVE</button>
+			</div>
+			<div class="col-lg-6"></div>
+		</div>
+	</form>
+	</div>
+	</body>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				$("#save").click(function(){
+					$.ajax({
+						type: "POST",
+						url: "/savewrestler/{{ wrestler_id }}/",
+						data: "teamlevel="+teamlevel+"&weight="+weight+"&currentmeet="+currentmeet,
+						async: true,
+						success: function(msg){
+						if (msg == "saved") {
+							$("#save").html('Saved');
+						} else {
+							$("#save").replaceWith('<button name="close" id="close" class="btn btn-danger">Close</button>');
+						}
+					});
+				});	
+		});
+		</script>
+</html>

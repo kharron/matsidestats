@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Matside Stats</title>
+		<link rel="stylesheet" href="/static/css/bootstrap.css" />
+		<link href="/static/css/bootstrap-responsive.css" rel="stylesheet" />
+	</head>
+<body>
+	<table class="table table-condensed table-striped">
+		<tbody>
+			<thead>
+				<tr>
+					<th>
+						Info
+					</th>
+				</tr>
+			</thead>
+	{% for match in matches %}
+			<tr>
+				<td>
+					<a href="/trackmatch/">{{ match.wrestler }}</a>
+				</td>
+			</tr>
+	{% endfor %}
+		</tbody>
+	</table>
+</body>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	});
+</script>
+</html>
+
+
+
