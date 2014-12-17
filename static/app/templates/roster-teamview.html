@@ -1,0 +1,42 @@
+<!--
+-->
+<ion-view title="Roster Teamview">
+  <ion-content has-header="true" padding="true" has-bouncing="true">
+		<ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh_roster(true)"> </ion-refresher>
+			<div class="list">
+				<div class="item item-input-inset">
+					<label class="item-input-wrapper">
+						<input type="text" placeholder="Wrestler Name" ng-model="addwrestler.name">
+					</label>
+					<button ng-click="addWrestler()" class="button button-small">
+						Add Wrestler
+					</button>
+				</div>
+			</div>
+			<div class="card" ng-repeat="wrestler in wrestlers">
+				<div ui-sref="roster.view_matches({ wrestler_id: wrestler.id, wrestler_name: wrestler.name })" class="item item-divider" >
+						{{ wrestler.name }}
+				</div>
+				<div class="item item-text-wrap">
+					{{ wrestler.weight }} @ {{ wrestler.current_meet }}
+				</div>
+				<div class="item item-divider">
+
+					{{ wrestler.match_button }}
+					<action-button matches_complete="wrestler.match_button" wrestler="wrestler"></action-button>
+				</div>
+			</div>
+			<h3>Inactive Wrestlers</h3>
+			<div class="card" ng-repeat="nawrestler in nawrestlers">
+				<div class="item item-divider">
+					{{ nawrestler.name }}
+				</div>
+				<div class="item item-text-wrap">
+					<b>Status:</b> {{ nawrestler.teamlevel }}
+				</div>
+				<div class="item item-divider">
+					
+				</div>
+			</div>
+  </ion-content>
+</ion-view>

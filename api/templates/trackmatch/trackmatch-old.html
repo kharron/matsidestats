@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/static/css/bootstrap.css" />
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet" />
+	<style type="text/css">
+		#layover {
+			visibility: hidden;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 10;
+			width: 100%;
+			height: 1000px;
+			background-color: #000;
+			opacity: .35;
+		}
+		#top-layover {
+			visibility: hidden;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 20;
+			width: 100%;
+			height: 1000px;
+		}
+		#minus-period { float: left; margin-left:10px;;font-size:13px;font-weight:bold; }
+		#period { color:#F87531;float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+		#period_label { float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+		#minus-period { float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+		.points1 input { 
+			background-color:#A52A2A;
+			float:right;
+			width:30%;
+		}
+		.points2 input {
+			background-color:#AADD00;
+			float:left;
+			width:30%;
+		}
+		.stall1 {
+			float:right;
+			margin:0 5px 20px;
+		}
+		.stall2 {
+			float:left;
+			margin:0 0px 20px 5px;
+		}
+		#time { float:left }
+		.title-name {
+			float: left;
+		}
+		.title-nav {
+			float: right;
+			margin-left: 20px;
+		}
+
+	</style>
+	<title>
+		Matside Stats
+	</title>
+</head>
+<body>
+		<div id="layover"></div>
+		<div id="top-layover"></div>
+		<div class="containter">
+			<div style="width:100%;height: 16px;color:#fff;font-family:arial;font-size:12px;background-color:#000;text-align:center;">
+				<div class="title-name">{{ wrestler.name }} </div> <div class="title-nav"><a href="http://www.matsidestats.com/teamview/">End Match</a></div>
+			</div>
+			<div style="float:left;width:50%;" id="match_info">
+				<div id="minus-period">-</div><div id=period_label>pd: </div><div id="period">1</div><div id="add-period">+</div>
+			</div>
+			<div style="float:left;width:40%;" id="time_info">
+				<div id="time">02:00</div>
+			</div>
+			<div style="clear:both;"></div>
+			<div style="float:left;width:48%;" class="wrestler1 points1">
+				<input type="text" name="green" value="0" style="width:30%;margin-bottom: 20px;height:50px;text-align:center;font-size:40px;" />
+				<button ptvalue="stall1" style="height:50px;width:30%;" class="btn btn-danger stall1">stall</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">T2</button>
+				<button ptvalue="1" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">E1</button>
+					<button ptvalue="2" style="margin:0 3px 10px;height:40px;width:49%;float:right;" class="btn btn-primary">N2</button>
+					<button ptvalue="3" style="margin:0 0 10px;height:40px;width:49%;float:right;" class="btn btn-primary">N3</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-warning">R2</button>
+			</div>
+			<div style="float:left;width:48%;margin-left:10px;" class="wrestler2 points2">
+				<input type="text" name="red" value="0" style="width:100%;margin-bottom: 20px;height:50px;text-align:center;font-size:40px;" />
+				<button ptvalue="stall2" style="height:50px;width:30%;" class="btn btn-danger stall2">stall</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">T2</button>
+				<button ptvalue="1" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">E1</button>
+					<button ptvalue="2" style="margin:0 0 10px;height:40px;width:49%;float:left;" class="btn btn-primary">N2</button>
+					<button ptvalue="3" style="margin:0 3px 10px;height:40px;width:49%;float:left;" class="btn btn-primary">N3</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-warning">R2</button>
+			</div>
+		</div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script type="text/javascript">
+	/* Below are Global Vars */
+	var count=120;
+	var runtime='stop';
+	var stall_warn1 = 0;
+	var stall_warn2 = 0;
+
+		
+	/* End Global Vars */
+
+	function resize_stuff(){
+		//window.innterHeight
+		curHeight = window.innerHeight;
+		curWidth = window.outerWidth; //innerWidth doesn't change from its inital value on Chrome for android HTC EVO 4g lte
+		buttonpixheight = curHeight/7;
+		buttonfontsize = buttonpixheight/2;
+		if (curWidth < 640) { small_divider = 4 } else { small_divider = 3 };
+		smallbuttonfont = buttonpixheight/small_divider;
+		$(".btn").css("height", buttonpixheight+"px");
+		$("input").css("height", buttonpixheight+"px");
+		$("input").css("width", "30%");
+		$(".btn").css("font-size", buttonfontsize+"px"); 
+		$("input").css("font-size", buttonfontsize+"px"); 
+		$(".stall1, .stall2").css("font-size", smallbuttonfont+"px");
+		$("#minus-period, #period, #add-period, .settings-icon").css("font-size", buttonfontsize+"px");
+		#("#time, #period_label").css("font-size", buttonfontsize/2+"px");
+	}
+
+	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+	function start_timer(){
+		var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+	}
+
+	function timer()
+	{
+		if (runtime!="stop"){
+			$("#time").css("color","#AADD00");
+			count=count-1;
+			if (count <= 0){
+				if (count == 0){
+					//move to next period and reset clock
+					$("#add-period").click();
+					runtime="stop";
+					count=120;
+				} else {
+				   clearInterval(counter);
+					//counter ended, do something here
+					return;
+				}
+			}
+			minutes = count/60;
+			if (minutes < 1){ minutes = 0 }
+			minutes = parseInt(minutes);
+			seconds = count%60;
+			if (seconds < 10){ seconds = "0"+seconds; }
+			time_left = "0"+minutes+":"+seconds;
+			$("#time").html(time_left);
+		} else {
+			$("#time").css("color","#990000");
+		}
+
+	  //Do code for showing the number of seconds here
+	}
+	window.addEventListener("resize", function() {
+		resize_stuff();
+	}, false);
+
+function manage_stall_warning(ptvalue) {
+	if (ptvalue=="stall1"){
+		stall_warn1+=1;
+		if (stall_warn1>=2){
+			if (stall_warn1 > 3){stall_increment=2} else {stall_increment=1};
+			curr_val = $(".wrestler2 input").val();
+			if (curr_val==""){curr_val=0};
+			new_val = parseInt(curr_val)+stall_increment;
+			$(".wrestler2 input").val(new_val);
+		}
+	} else if (ptvalue=="stall2"){
+		stall_warn2+=1;
+		if (stall_warn2>=2){
+			if (stall_warn2 > 3){stall_increment=2} else {stall_increment=1};
+			curr_val = $(".wrestler1 input").val();
+			if (curr_val==""){curr_val=0};
+			new_val = parseInt(curr_val)+stall_increment;
+			$(".wrestler1 input").val(new_val);
+		}
+	}
+}
+	$(document).ready(function(){
+		$("#time").click(function(){
+			if (runtime=="stop"){
+				runtime='run';
+			} else {
+				runtime='stop';
+			}
+		});
+
+		$('body').on('swipeleft swiperight',function(event){
+			    if (event.type == "swiperight") {
+				     alert("swipped right side");      
+				}
+				if (event.type == "swipeleft") {
+					 alert("swipped left side");
+					 event.preventDefault();
+				}
+		});
+
+		resize_stuff();
+
+		$("#settings-icon").click(function(){
+
+			//add layover and the stuff that goes with it.
+
+		});
+		$("button").click(function(){
+			var button_action = new Array('stall1','stall2')
+			ptvalue = $(this).attr("ptvalue");
+			if (button_action.indexOf(ptvalue) >= 0){
+				switch (ptvalue){
+					case "stall1":
+						manage_stall_warning(ptvalue);
+						break;
+					case "stall2":
+						manage_stall_warning(ptvalue);
+						break;
+				}
+			} else {
+				inpt = $(this).parent().find("input")	
+				current_value = inpt.val();
+				if (current_value==""){current_value=0};
+				new_value = parseInt(ptvalue)+parseInt(current_value);
+				inpt.val(new_value);
+				color = inpt.attr("name");
+				pointcode = $(this).val()
+				$.ajax({
+					type:"post",
+					url:"/addpoints/{{ match_id }}/",
+					async: true,
+					data:"color="+color+"&pointcode="+pointcode+"&points="+ptvalue,
+				})
+			}
+		});
+
+		$("#add-period").click(function(){
+			current_val = parseInt($("#period").html());
+			new_val = current_val+1;
+			$("#period").html(new_val);
+		});
+		$("#minus-period").click(function(){
+			current_val = parseInt($("#period").html());
+			new_val = current_val-1;
+			$("#period").html(new_val);
+		});
+	});
+
+</script>
+</html>

@@ -1,0 +1,197 @@
+{% extends 'trackmatch/base.html' %}
+{% block title %}
+<title>Matside Stats - Edit Wrestler</title>
+{% endblock %}
+{% block content %}
+        	<section id="content-wrapper">
+
+			<section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>Edit Wrestler Details</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <article>
+
+                	<div class="wrapper">
+
+							<div class="container">
+								<div class="row">
+									<div class="col-md-12"><p class="bg-info">Update your wrestlers' information including the current Tourney/Meet that he is in. Touch "save" to complete and return to teamview</p></div>
+								</div>
+								<div class="row">
+									<a href="/teamview" class="button-link"><button class="btn btn-block btn-primary">BACK to Teamview</button></a>
+									<form role="form" id="wrestler-form" action="/updatewrestler/" method="POST">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="wrestler_name">Wrestler Name</label>
+												<input type="text" value="{{ wrestler_name }}" id="wrestler_name" class="form-control" name="wrestler_name" />
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="teamlevel">Team Level</label> 
+												<select name="teamlevel" class="form-control" id="teamlevel">
+													<option value="{{ teamlevel }}" selected>{{ teamlevel }}</option>
+													<option value="Freshman">Freshman</option>
+													<option value="JV">JV</option>
+													<option value="Varsity B">Varsity B</option>
+													<option value="Varsity">Varsity</option>
+													<option value="Graduated">Graduated</option>
+													<option value="Injured">Injured</option>
+													<option value="Quit">Quit</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+											<label for="weightclass">Weight Class</label>
+												<select name="weightclass" id="weightclass" class="form-control">
+													<option value="{{ weight }}" selected>{{ weight }}</option>
+													<option value="106">106</option>
+													<option value="113">113</option>
+													<option value="122">122</option>
+													<option value="128">128</option>
+													<option value="133">133</option>
+													<option value="139">139</option>
+													<option value="145">145</option>
+													<option value="154">154</option>
+													<option value="160">160</option>
+													<option value="171">171</option>
+													<option value="184">184</option>
+													<option value="197">197</option>
+													<option value="220">220</option>
+													<option value="HWT">HWT</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="current_meet">Current Meet/Tourney</label>
+												<select class="form-control" name="current_meet">
+													<option value="{{ current_meet_wr }}" selected>{{ current_meet_wr }}</option>
+													{% for meet in current_meet %}
+														<option value="{{ meet.name }}">{{ meet.name }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<input type="hidden" name="wrestler_id" value="{{ wrestler_id }}" />
+												<button id="save" type="submit" name="save" class="btn btn-block btn-primary">SAVE Wrestler</button>
+											</div>
+										</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+                    <div class="wrapper">
+
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2014</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Matside Stats</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
+{% endblock %}
+{% block javascript-stuff %}
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
+
+
+		$(document).ready(function(){
+			$("#add-wrestler").on("submit", function(e){
+				e.preventDefault();
+				if ($("#wrestler").val().length < 1){
+					alert("Enter a new wrestler");
+				} else {
+					this.submit();
+				}
+			});
+			$("#save").on("click", function(){
+				});
+			$(".wrestler-edit").click(function(){
+				//place layover and form for editing
+				$("#wrestler-layover").css("display", "block")
+				$("#wrestler-profile").css("display", "block")
+				$("#wrestler-layover").css("visibility", "visible")
+				$("#wrestler-profile").css("visibility", "visible")
+				wid = $(this).attr("wrestlerid");
+				$.ajax({
+					type:"GET",
+					url:"/getwrestler/"+wid+"/",
+					async: true,
+					success: function(info){
+						$("#wrestler-profile").append(info);
+					}
+				});
+			});
+			$("#wrestler-layover").click(function(){
+				$(this).fadeOut(200);
+			});
+			$("body").on("click", "#save2", function(e){
+					e.preventDefault();
+					wrestler_id = $("#form-wrestler_id").val();
+					teamlevel = $("#form-teamlevel").val();
+					weight = $("#form-weight").val();
+					currentmeet = $("#form-currentmeet").val();
+					$.ajax({
+						type: "POST",
+						url: "/updatewrestler/",
+						data: "wrestler_id="+wrester_id+"&teamlevel="+teamlevel+"&weight="+weight+"&currentmeet="+currentmeet,
+						async: true,
+						success: function(msg){
+						if (msg == "saved") {
+							$("#save").html('Saved');
+							$("#wrestler-layover").click();
+						} else {
+							$("#save").replaceWith('<button name="close" id="close" class="btn btn-danger">Close</button>');
+						}
+					}
+				});
+			});
+		});
+	</script>
+
+</html>
+{% endblock %}

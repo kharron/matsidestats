@@ -1,0 +1,163 @@
+{% extends 'trackmatch/base.html' %}
+{% block content %}
+        	<section id="content-wrapper">
+
+			<section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>How to use</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <article>
+
+                	<div class="wrapper">
+
+		<div class="container">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3>Using Matside Stats</h3>
+				</div>
+				<div class="panel-body">
+					Matside stats is a tool for maintaining wrestling stats for individuals and teams.
+				</div>
+			</div> 
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3>How it works</h3>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li>Easily register with an email address and password</li>
+						<li>Enter a few team details</li>
+						<li>Enter your wrestlers</li>
+						<li>Enter the tournament or dual meet</li>
+						<li>Add an opponent to your wrestler and start the match</li>
+						<li>Track the match live using your cell phone or tablet</li>
+						<li>When the match is done each point scored has been saved for later review</li>
+					</ul>
+				</div>
+			</div> 
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3>Tracking stats</h3>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li>The tracker is currently only setup for folk style scoring.  
+						<li>Each time a point is scored the tracker disables points that are not available any longer.</li>
+					</ul>
+				</div>
+			</div> 
+		</div>
+
+
+                    <div class="wrapper">
+
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2014</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Matside Stats</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
+{% endblock %}
+{% block javascript-stuff %}
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
+
+
+		$(document).ready(function(){
+			$("#add-wrestler").on("submit", function(e){
+				e.preventDefault();
+				if ($("#wrestler").val().length < 1){
+					alert("Enter a new wrestler");
+				} else {
+					this.submit();
+				}
+			});
+			$("#save").on("click", function(){
+					alert("HERE");
+				});
+			$(".wrestler-edit").click(function(){
+				//place layover and form for editing
+				$("#wrestler-layover").css("display", "block")
+				$("#wrestler-profile").css("display", "block")
+				$("#wrestler-layover").css("visibility", "visible")
+				$("#wrestler-profile").css("visibility", "visible")
+				wid = $(this).attr("wrestlerid");
+				$.ajax({
+					type:"GET",
+					url:"/getwrestler/"+wid+"/",
+					async: true,
+					success: function(info){
+						$("#wrestler-profile").append(info);
+					}
+				});
+			});
+			$("#wrestler-layover").click(function(){
+				$(this).fadeOut(200);
+			});
+			$("#save2").on("click", function(){
+					alert("Save...");
+					wrestler_id = $("#form-wrestler_id").val();
+					teamlevel = $("#form-teamlevel").val();
+					weight = $("#form-weight").val();
+					currentmeet = $("#form-currentmeet").val();
+					$.ajax({
+						type: "POST",
+						url: "/savewrestler/",
+						data: "wrestler_id="+wrester_id+"&teamlevel="+teamlevel+"&weight="+weight+"&currentmeet="+currentmeet,
+						async: true,
+						success: function(msg){
+						if (msg == "saved") {
+							$("#save").html('Saved');
+							alert("Saved");
+							$("#wrestler-layover").click();
+						} else {
+							$("#save").replaceWith('<button name="close" id="close" class="btn btn-danger">Close</button>');
+						}
+					}
+				});
+			});
+		});
+	</script>
+
+</html>
+{% endblock %}

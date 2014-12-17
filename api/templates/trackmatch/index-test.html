@@ -1,0 +1,72 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+	-->
+	<link rel="stylesheet" href="/static/css/bootstrap.css" />
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet" />
+	<style type="text/css">
+		#minus-period { float: left; margin-left:10px;;font-size:13px;font-weight:bold; }
+		#period { color:#F87531;float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+		#period_label { float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+		#minus-period { float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+		.points1 input { 
+			background-color:#A52A2A;
+			float:right;
+			width:30%;
+		}
+		.points2 input {
+			background-color:#AADD00;
+			float:left;
+			width:30%;
+		}
+		.stall1 {
+			float:right;
+			margin:0 5px 20px;
+		}
+		.stall2 {
+			float:left;
+			margin:0 0px 20px 5px;
+		}
+	</style>
+	<!--
+	<title>
+		Matside Stats
+	</title>
+</head>
+<body>
+	<div class="box">
+	-->
+		<div class="containter">
+			<div style="float:left;width:50%;" id="match_info">
+				<div id="minus-period">-</div><div id=period_label>P: </div><div id="period">1</div><div id="add-period">+</div>
+			</div>
+			<div style="float:left;width:40%;" id="time_info">
+				<div id="time">02:00</div>
+			</div>
+			<div style="float:left;width:48%;" class="wrestler1 points1">
+				<input type="text" name="green" value="0" style="width:30%;margin-bottom: 20px;height:50px;text-align:center;font-size:40px;" />
+				<button ptvalue="stall1" style="height:50px;width:30%;" class="btn btn-danger stall1">stall</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">T2</button>
+				<button ptvalue="1" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">E1</button>
+					<button ptvalue="2" style="margin:0 3px 10px;height:40px;width:49%;float:right;" class="btn btn-primary">N2</button>
+					<button ptvalue="3" style="margin:0 0 10px;height:40px;width:49%;float:right;" class="btn btn-primary">N3</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-warning">R2</button>
+			</div>
+			<div style="float:left;width:48%;margin-left:10px;" class="wrestler2 points2">
+				<input type="text" name="red" value="0" style="width:100%;margin-bottom: 20px;height:50px;text-align:center;font-size:40px;" />
+				<button ptvalue="stall2" style="height:50px;width:30%;" class="btn btn-danger stall2">stall</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">T2</button>
+				<button ptvalue="1" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-primary">E1</button>
+					<button ptvalue="2" style="margin:0 0 10px;height:40px;width:49%;float:left;" class="btn btn-primary">N2</button>
+					<button ptvalue="3" style="margin:0 3px 10px;height:40px;width:49%;float:left;" class="btn btn-primary">N3</button>
+				<button ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;" class="btn btn-warning">R2</button>
+			</div>
+		</div>
+		<!--
+	</div>
+	-->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</html>

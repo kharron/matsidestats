@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Backbone Testing</title>
+		<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.css'>
+	</head>
+<body>
+	<h2>Backbone testing</h2>
+	<div id="search_container"></div>
+	<br /><br />
+	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPeriodChoice">
+		  Launch demo modal
+	  </button>
+
+</body>
+	
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript" src="/static/js/underscore-min.js"></script>
+	<script type="text/javascript" src="/static/js/backbone-min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+	<script type="text/template" id="search_template">
+		<label>Search <%= search_for %></label>
+		<input type="text" id="search_input" />
+		<input type="button" id="search_button" value="Search" />
+	</script>
+	<script>
+		var Song = Backbone.Model.extend({
+			initialize: function(){
+				console.log("Music is my friend");
+			},
+			defaults: {name: "Not specified", artist: "Not provided"}
+		});
+
+		var Album = Backbone.Collection.extend({ model: Song });
+		var song1 = new Song({ name: "Thriller", artist: "Michael Jackson"})
+		var song2 = new Song({ name: "Vivrant Thing", artist: "Q-Tip"})
+		var song3 = new Song({ name: "We were young", artist: "Fun" })
+		
+		var myAlbum = new Album([ song1, song2, song3 ]);
+		console.log( myAlbum.models );
+		console.log( myAlbum[0].get("name") );
+
+	</script>
+	<script>
+		var AppRouter = Backbone.Router.extend({
+			routes: {
+				"posts/:id": "getPost",
+				"*actions": "defaultRoute"
+			}
+		});
+		var app_router = new AppRouter;
+		app_router.on('route:getPost', function(id) {
+			alert(" Get post " + id);
+		});
+		app_router.on('route:defaultRoute', function(actions) {
+			alert(actions);
+		});
+		Backbone.history.start();
+	</script>
+	<script type="text/javascript">
+		SearchView = Backbone.View.extend({
+			initialize: function(){
+				this.render();
+			}, 
+			render: function(){
+				var variables = { search_for: "Food" };
+				var template = _.template( $("#search_template").html(), variables );
+				this.$el.html( template );
+			},
+			events: {
+				"click input[type=button]": "doSearch"
+			},
+			doSearch: function (event) {
+				alert( "Search For " + $("#search_input").val() );
+			}
+		}); 
+		var search_view = new SearchView({ el: $("#search_container") });
+	</script>
+</html>

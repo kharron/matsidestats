@@ -1,0 +1,188 @@
+{% extends 'trackmatch/base.html' %}
+{% block content %}
+			<section id="content-wrapper">
+
+				<section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>Matside Stats</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <article>
+
+                	<div class="wrapper">
+
+						<h2>Add New Meet</h2>
+						<div class="row">
+							<div class="col-sm-4 col-md-4 col-lg-4">
+								<form class="form-horizontal" role="form" action="/addmeet/" method="POST">
+									<div class="form-group">
+									{% csrf_token %}
+										<div class="col-xs-10">
+											<input type="text" name="meetname" placeholder="Meet Name" required>
+										</div>
+										<div class="col-xs-10">
+											<input type="text" name="address" placeholder="Meet Address">
+										</div>
+										<div class="col-xs-10">
+											<input type="submit" value="Submit"> 
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4">
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4">
+							</div>
+						</div>
+						<div style="height:20px;"></div>
+						<h2>Current Available Meets</h2>
+							<div class="row">
+								<div class="span12">
+									<table class="table table-condensed table-striped">
+										<thead>
+											<tr>
+												<th>Meet Name</th>
+												<th>Location</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for meet in meets %}
+											<tr>
+												<td>
+													<div class="meetlist">{{ meet.name }}</div>
+												</td>
+												<td>								
+													{{ meet.address }}, {{ meet.city }}, {{ meet.state }}
+												</td>
+												<td>
+													<a href="/meetdelete/{{ meet.id }}">Delete</a>
+												</td>
+											</tr>
+										{% endfor %}
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+							</div>
+
+								</div>
+                    <table class="contact">
+
+
+                    </table>
+
+                    <div class="wrapper">
+
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2014</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Matside Stats</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
+	{% endblock %}
+{% block javascript-stuff %}
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
+
+
+		$(document).ready(function(){
+			$("#add-wrestler").on("submit", function(e){
+				e.preventDefault();
+				if ($("#wrestler").val().length < 1){
+					alert("Enter a new wrestler");
+				} else {
+					this.submit();
+				}
+			});
+			$("#save").on("click", function(){
+					alert("HERE");
+				});
+			$(".wrestler-edit").click(function(){
+				//place layover and form for editing
+				$("#wrestler-layover").css("display", "block")
+				$("#wrestler-profile").css("display", "block")
+				$("#wrestler-layover").css("visibility", "visible")
+				$("#wrestler-profile").css("visibility", "visible")
+				wid = $(this).attr("wrestlerid"); 
+				$.ajax({
+					type:"GET",
+					url:"/getwrestler/"+wid+"/",
+					async: true,
+					success: function(info){
+						$("#wrestler-profile").append(info);
+					}
+				});
+			});
+			$("#wrestler-layover").click(function(){
+				$(this).fadeOut(200);
+			});
+			$(".green").click(function(){
+				wid = $(this).attr("wrestlerid")
+				window.location.href = "/start_match/"+wid+"/";
+			});
+			$("#save2").on("click", function(){
+					alert("Save...");
+					wrestler_id = $("#form-wrestler_id").val();
+					teamlevel = $("#form-teamlevel").val();
+					weight = $("#form-weight").val();
+					currentmeet = $("#form-currentmeet").val();
+					$.ajax({
+						type: "POST",
+						url: "/savewrestler/",
+						data: "wrestler_id="+wrester_id+"&teamlevel="+teamlevel+"&weight="+weight+"&currentmeet="+currentmeet,
+						async: true,
+						success: function(msg){
+						if (msg == "saved") {
+							$("#save").html('Saved');
+							alert("Saved");
+							$("#wrestler-layover").click();
+						} else {
+							$("#save").replaceWith('<button name="close" id="close" class="btn btn-danger">Close</button>');
+						}
+					}
+				});	
+			});
+		});
+	</script>
+
+</html>
+{% endblock %}

@@ -1,0 +1,42 @@
+<ion-view title="Team Account">
+  <ion-content class="padding">
+    <h1>Team Info</h1>
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Team Coach</span>
+			<input type="text" placeholder="John Hancock" ng-model="team.coach">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Team Name</span>
+			<input type="text" placeholder="Carlsbad Lancers" ng-model="team.name">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Address</span>
+			<input type="text" placeholder="1234 Lancer Way" ng-model="team.address">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">City</span>
+			<input type="text" placeholder="Carlsbad" ng-model="team.city">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">State</span>
+			<input type="text" placeholder="CA" ng-model="team.state">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Email Address</span>
+			<input type="text" placeholder="john@carlsbadwrestling.com" ng-model="team.username">
+			</label>
+		</div>
+		<button ng-click="updateTeam(team)" class="button button-block button-positive"> {{ team_save_btn }} </button>
+		<div style="height:50px;"></div>
+		<h2>Login to sync online</h2>
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Password</span>
+			<input type="password" placeholder="turtle123" ng-model="account.password">
+			</label>
+		<button ng-click="login()" class="button button-block button-positive">Login / Signup</button>
+		</div>
+  </ion-content>
+</ion-view>
+

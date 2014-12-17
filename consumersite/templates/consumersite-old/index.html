@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matside Stats</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/photoswipe/photoswipe.css" />
+    <link rel="stylesheet" type="text/css" href="/static/font/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" /> 
+</head>
+<body>
+
+	<div class="screen">
+		<div class="menu">
+			<ul class="ulMenu">
+				<li><a href="javascript:menu('1');" ><i class="fa fa-home"></i><span>Home</span></a></li>
+				<li><a href="javascript:menu('2');"><i class="fa fa-info"></i><span>Login</span></a></li>
+				<li><a href="javascript:menu('3');"><i class="fa fa-file-text-o"></i><span>Team View</span></a></li>
+				<li><a href="javascript:menu('4');"><i class="fa fa-picture-o"></i><span>About Us</span></a></li>
+				<li><a href="javascript:menu('5');"><i class="fa fa-map-marker"></i><span>Contact</span></a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div id="body">
+				<div class="headerBack">
+					<div id="header" class="borderRadius">
+						<a class="button" href="#"><div class="btn"><i class="fa fa-reorder" style="display: inline;"></i></div></a>
+						<h1 class="sectionTitle"></h1>
+						<a id="location" style="display:none;" href="javascript:alert('Button only')">
+							<div class="location"><i id="posIcon" class="fa fa-location-arrow"></i></div>
+						</a>
+					</div>
+				</div>
+				<div id="wrapper">
+					<div class="scroller">
+						<div id="sectionContent"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/menu.js"></script>
+	<script type="text/javascript" src="/static/js/fastclick.js"></script>
+	<script type="text/javascript" src="/static/js/iscroll.js"></script>
+	<script type="text/javascript" src="/static/js/photoswipe/klass.min.js"></script>
+	<script type="text/javascript" src="/static/js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.slides.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+	<script id="test" type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript">
+	    app.initialize();
+	</script>
+</body>
+</html>

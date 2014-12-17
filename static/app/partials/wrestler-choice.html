@@ -1,0 +1,9 @@
+		<div class="list">
+			<div class="item-content">
+				<ion-radio ng-repeat="item in wrestler_choice"  ng-model="dataWrestler.serverSide" ng-value="item.value" name="serverside" >{{ item.name }}</ion-radio>
+			</div>
+			<div class="item item-divider">Wrestler Choice</div>
+			<ion-radio ng-repeat="item in period_choice"  ng-model="dataPos.clientSide" ng-value="item.value">{{ item.text }}</ion-radio>
+			</div>
+		</div>
+

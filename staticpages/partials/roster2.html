@@ -1,0 +1,86 @@
+<div ng-controller="teamviewCtrl">
+	<h3>A List of Wrestlers</h3>
+					<div id="wrestler-layover"></div>
+					<div id="wrestler-profile"></div>
+					<div class="row">
+						<div class="span12">
+							<h3> {{ teamname }} </h3>
+							<form role="form" action="/addwrestler/" method="POST">
+								<div class="form-group">
+									<div class="col-xs-6">
+										<input type="text" class="form-control" id="wrestler" name="wrestler" placeholder="Wrestler Name" />
+									</div>
+									<div class="col-xs-6">
+										<button type="submit" id="add-wrestler" class="btn btn-primary">Add Wrestler</button>
+									</div>
+								</div>
+							</form>
+							<div style="height:10px;"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<table class="table table-condensed table-striped">
+								<thead>
+									<tr>
+										<th>Wrestler</th>
+										<th>Details</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="wrestler in wrestlers">
+										<td>
+											<a href="/view_matches/{{ wrestler.id }}/">{{ wrestler.name }}</a>
+										</td>
+										<td>
+											<div wrestlerid="{{ wrestler.id }}" class="edit">
+												<br />{{ wrestler.weight }} @ {{ wrestler.current_meet_id }}<br /> 
+											</div>
+										</td>
+										<td>
+											<action-button wrestler="wrestler"></action-button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+						<!-- Start Inactive Wrestlers -->
+						<div class="row">
+							<div class="col-xs-12">
+									Inactive Wrestlers
+							</div>
+							<div class="col-xs-12">
+								<table class="table table-condensed table-striped">
+									<thead>
+										<tr>
+											<th>Wrestler</th>
+											<th>Details</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for wrestler in na_wrestlers %}
+										<tr>
+											<td>
+												<a href="/view_matches/{{ wrestler.id }}/">{{ wrestler.name }}</a>
+											</td>
+											<td>
+													{{ wrestler.teamlevel }}
+											</td>
+											<td>
+											</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div> 
+						<!-- End Inactive Wrestlers -->
+					</div>
+			</div>
+	</div>
+</div>
+

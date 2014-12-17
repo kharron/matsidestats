@@ -1,0 +1,36 @@
+<ion-view title="{{ wrestler.name }} Details">
+  <ion-content has-header="true" padding="true" has-bouncing="true">
+		<h2>Wrestler Details</h2>
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Wrestler Name</span>
+			<input type="text" placeholder="i.e. John Smith" ng-model="wrestler.name">
+			<input type="hidden" ng-model="wrestler.id" />
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Weight</span>
+			<input type="text" placeholder="i.e. 125" ng-model="wrestler.weight">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Year</span>
+			<input type="text" placeholder="i.e. Senior" ng-model="wrestler.year">
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Team Level</span>
+			<input type="text" placeholder="i.e. Varsity" ng-model="wrestler.teamlevel">
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Current Meet
+				</div>
+				<select ng-options="act.name for act in meets track by act.name" ng-model="tourney.id" ng-change="changeValue()" ></select>
+			</label>
+			<label class="item item-input item-stacked-label">
+			<span class="input-label">Email Address</span>
+			<input type="text" placeholder="i.e. john@carlsbadwrestling.com" ng-model="wrestler.email">
+			</label>
+		</div>
+		<button ng-click="saveWrestler()" class="button button-block button-positive">{{ save_button }}</button>
+	</ion-content>
+</ion-view>
+

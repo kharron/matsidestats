@@ -1,0 +1,16 @@
+
+		<div class="container" ng-controller="validateController">
+			<a href="/staticpages/teamview">Click Here</a>
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="email" class="form-control" ng-model="username" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+				<button class="btn btn-lg btn-primary btn-block" ng-click="login()">{{ login_text }}</button>
+      </form>			
+			<div class="alert" ng-hide>{{ msg }}</div>
+		</div>

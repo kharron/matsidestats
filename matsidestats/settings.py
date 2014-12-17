@@ -97,6 +97,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+		'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -104,6 +105,36 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+# Cors whitelist - Use below to allow all
+CORS_ORIGIN_ALLOW_ALL = True
+# https://github.com/ottoyiu/django-cors-headers for more info
+CORS_ORIGIN_WHITELIST = (
+		'provethisconcept.com',
+		'api.matsidestats.com',
+		'dev.matsidestats.com',
+		'matsidestats.com'
+		)
+
+CORS_ALLOW_METHODS = (
+		'GET',
+		'POST',
+		'PUT',
+		'PATCH',
+		'DELETE',
+		'OPTIONS'
+)
+
+CORS_ALLOW_HEADERS = (
+		'x-requested-with',
+		'content-type',
+		'accept',
+		'origin',
+		'authorization',
+		'x-csrftoken',
+		'x-www-form-urlencoded',
+		'Accept-Encoding'
 )
 
 ROOT_URLCONF = 'matsidestats.urls'
@@ -119,18 +150,21 @@ TEMPLATE_DIRS = (
 	'/www/sites/matsidestats/login/templates',
 	'/www/sites/matsidestats/register/templates',
 	'/www/sites/matsidestats/consumersite/templates',
+	'/www/sites/matsidestats/howto/templates',
+	'/www/sites/matsidestats/api/templates',
 )
 
 INSTALLED_APPS = (
+		'corsheaders',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'south',
-	'trackmatch',
-	'register',
+		'south',
+		'trackmatch',
+		'register',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

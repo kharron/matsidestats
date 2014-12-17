@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+	</head>
+	<body>
+		<h2>Test Backbone</h2>
+		<div ng-app="" ng-controller="personController">
+
+			<input type="text" ng-model="firstname" /><br />
+			<input type="text" ng-model="lastname" />
+			<br /><br />
+			Your full name: {{ fullname() }}
+
+			<br /><br />
+	</div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+			function personController($scope){
+				$scope.firstname = "Kharron";
+				$scope.lastname = "Reid";
+				$scope.fullname = function() {
+					return $scope.firstname + " " + $scope.lastname;
+				}
+			}
+		</script>
+	</body>
+</html>

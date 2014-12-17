@@ -1,0 +1,59 @@
+@font-face {
+	font-family: scoreboard;
+		src: url(../fonts/scoreboard.ttf);
+}
+
+#layover {
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+	width: 100%;
+	background-color: #000;
+	opacity: .35;
+}
+#top-layover {
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 20;
+	width: 100%;
+}
+#minus-period { float: left; margin-left:10px;;font-size:13px;font-weight:bold; }
+#period { color:#F87531;float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+#period_label { float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+#minus-period { float: left;margin-left:10px;font-size:13px;font-weight:bold; }
+.points1 input {
+	background-color:#99CCCC;
+	float:right;
+	width:30%;
+}
+.points2 input {
+	background-color:#A8A8A8;
+	float:left;
+	width:30%;
+}
+.stall1 {
+	float:right;
+	margin:0 5px 20px;
+}
+.stall2 {
+	float:left;
+	margin:0 0px 20px 5px;
+}
+#time { float:left; 
+	cursor: pointer;
+	font-family: scoreboard;
+	font-size: 4em;
+}
+.title-name {
+	float: left;
+}
+.title-nav {
+	float: right;
+	margin-left: 20px;
+}
+
+

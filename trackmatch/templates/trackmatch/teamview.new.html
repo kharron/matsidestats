@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+
+    <!-- [portable options] -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- [SEO] -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<meta name="author" content="Kharron Reid">
+
+    <title>Matside Stats - Team View</title>
+
+    <!-- [loading stylesheets] -->
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/style-template.css" /> 
+    <link type="text/css" rel="stylesheet" href="/static/css/flexslider.css" />
+
+    <!-- [loading fonts] -->
+    <script src="http://use.edgefonts.net/istok-web.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- [loading scripts] -->
+
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.touchswipe.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
+    </head>
+
+    <body>
+
+    	<section id="page-wrapper">
+
+        	<section id="menu-wrapper">
+
+                <div id="menu-search">
+                </div>
+
+                <ul class="menu">
+
+                    <li class="icon home">
+                        <a href="/">
+                            <span class="menu-li-title">Home</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon box">
+                        <a href="/logout/">
+                            <span class="menu-li-title">Logout</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon info">
+                        <a href="/managemeets/">
+                            <span class="menu-li-title">Manage Meets</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+<!--
+                    <li id="a-submenu-1" class="icon plus">
+
+                        <a href="#">
+                            <span class="menu-li-title">Features</span>
+                            <img class="menu-li-arrow-submenu" src="/static/images/icons/submenu.png" alt="" />
+                        </a>
+
+                        <ul id="submenu-1">
+                        	<li>
+                                <a href="index.html">
+                                    <span class="menu-li-title">Slider</span>
+                                    <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="index.html">
+                                    <span class="menu-li-title">Sidebar Menu</span>
+                                    <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+
+					</li>--> <!-- #submenu-1 -->
+
+                    <li class="icon mail">
+                        <a href="contact.php">
+                            <span class="menu-li-title">Contact</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                </ul> <!-- .menu -->
+
+            </section> <!-- #menu-wrapper -->
+
+            <section id="sidebar-wrapper">
+
+            	<h4 id="sidebar-title">Second sidebar</h4>
+
+                <div class="widget">
+                	<h4>Updated News</h4>
+            		<p>This will be used to display up-to-date news.  Possibly about the tournament you are currently in such as team rankings.</p>
+                </div>
+
+                <div class="widget">
+                	<h4>Latest posts widget</h4>
+                    <ul>
+                        <li class="item"><a href="#">State Championship previews</a></li>
+                        <li class="item"><a href="#">Toughest weight in California.</a></li>
+                        <li class="item"><a href="#">Where has the Granby gone?</a></li>
+                        <li class="item"><a href="#">California state rankings</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                	<h4>Contact widget</h4>
+                    <ul>
+						<!-- <li class="item"><a href="tel:45132141567">Call us</a></li>-->
+                        <li class="item"><a href="mailto:info@matsidestats.com">Mail to us</a></li>
+                        <li class="item"><a href="#">Visit us</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                	<h4>Share widget</h4>
+                    <ul class="social">
+
+                        <li class="blogger"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="wordpress"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="thumblr"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="html"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+
+                        <!-- find the right icons at https://github.com/joshuasortino/Publicons -->
+
+                    </ul>
+                </div>
+
+            </section> <!-- #sidebar-wrapper -->
+
+        	<section id="content-wrapper">
+
+			<section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>Matside Stats</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <article>
+
+                	<div class="wrapper">
+
+
+					<div class="container">
+							<div id="wrestler-layover"></div>
+							<div id="wrestler-profile"></div>
+							<div class="row">
+								<div class="span12">
+									<h3> {{ teamname }} </h3>
+									<form class="form-inline" role="form" action="/addwrestler/" method="POST">
+										{% csrf_token %}
+										<div class="form-group">
+											<input type="text" class="form-control" id="wrestler" name="wrestler" placeholder="Wrestler Name" />	
+											<button type="submit" id="add-wrestler" class="btn btn-primary">Add Wrestler</button>
+										</div>
+									</form>
+									<div style="height:10px;"></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="span12">
+									<table class="table table-condensed table-striped">
+										<thead>
+											<tr>
+												<th>Wrestler</th>
+												<th>Details</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for wrestler in wrestlers %}
+											<tr>
+												<td>
+													<a href="/view_matches/{{ wrestler.id }}/">{{ wrestler.name }}</a> ({{ wrestler.weight }} @ {{ wrestler.current_meet_id }})<br />
+													<a href="/addopponent/{{ wrestler.id }}/">{{ wrestler.current_opponent_id }}</a>
+												</td>
+												<td>								
+													<div wrestlerid="{{ wrestler.id }}" class="edit"><a href="/editwrestler/{{wrestler.id }}" /></a> <a href="/editwrestler/{{wrestler.id }}" /><i class="glyphicon glyphicon-user"></i></a></div>
+												</td>
+												<td>
+													<a href="/start_match/{{ wrestler.id }}">Start Match</a>
+												</td>
+											</tr>
+										{% endfor %}
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+							</div>
+					</div>
+
+								</div>
+                    <table class="contact">
+                    	<tr>
+                        	<td><a href="tel:450654331564"><img src="/static/images/icons/big-tel.png" alt="" /></a></td>
+                            <td><a href="mailto:mail@company.org"><img src="/static/images/icons/big-mail.png" alt="" /></a></td>
+                            <td><a href="#" target="_blank"><img src="/static/images/icons/big-web.png" alt="" /></a></td>
+                            <td><a href="#" target="_blank"><img src="/static/images/icons/big-cart.png" alt="" /></a></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-web.png" alt="" /><span><a href="http://matsidestats.com/">http://matsidestats.com/</a></span></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-mail.png" alt="" /><span>info@matsidestats.com</span></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-home.png" alt="" /><span>Oceanside, CA</span></td>
+                        </tr>
+
+                    </table>
+
+                    <div class="wrapper">
+
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2014</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Matside Stats</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
+
+
+		$(document).ready(function(){
+			$("#add-wrestler").on("submit", function(e){
+				e.preventDefault();
+				if ($("#wrestler").val().length < 1){
+					alert("Enter a new wrestler");
+				} else {
+					this.submit();
+				}
+			});
+			$("#save").on("click", function(){
+					alert("HERE");
+				});
+			$(".wrestler-edit").click(function(){
+				//place layover and form for editing
+				$("#wrestler-layover").css("display", "block")
+				$("#wrestler-profile").css("display", "block")
+				$("#wrestler-layover").css("visibility", "visible")
+				$("#wrestler-profile").css("visibility", "visible")
+				wid = $(this).attr("wrestlerid"); 
+				$.ajax({
+					type:"GET",
+					url:"/getwrestler/"+wid+"/",
+					async: true,
+					success: function(info){
+						$("#wrestler-profile").append(info);
+					}
+				});
+			});
+			$("#wrestler-layover").click(function(){
+				$(this).fadeOut(200);
+			});
+			$("#save2").on("click", function(){
+					alert("Save...");
+					wrestler_id = $("#form-wrestler_id").val();
+					teamlevel = $("#form-teamlevel").val();
+					weight = $("#form-weight").val();
+					currentmeet = $("#form-currentmeet").val();
+					$.ajax({
+						type: "POST",
+						url: "/savewrestler/",
+						data: "wrestler_id="+wrester_id+"&teamlevel="+teamlevel+"&weight="+weight+"&currentmeet="+currentmeet,
+						async: true,
+						success: function(msg){
+						if (msg == "saved") {
+							$("#save").html('Saved');
+							alert("Saved");
+							$("#wrestler-layover").click();
+						} else {
+							$("#save").replaceWith('<button name="close" id="close" class="btn btn-danger">Close</button>');
+						}
+					}
+				});	
+			});
+		});
+	</script>
+
+</html>

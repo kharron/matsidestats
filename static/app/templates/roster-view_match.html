@@ -1,0 +1,24 @@
+<ion-view title="{{ wrestler_name }}">
+  <ion-content has-header="true" padding="true">
+		<ul class="list">
+			<li class="item"> 
+				<button class="button button-block button-calm" ng-click="gotoTeamview()">Back to teamview</button>
+				<h2>Match Information Below</h2>
+				<div class="row">
+					<div class="col col-20">Period</div>
+					<div class="col col-40">Green</div>
+					<div class="col col-40">Red</div>
+				</div>
+				<div class="row" ng-repeat="point in points">
+					<div class="col col-20">{{ point.period }}</div>
+					<div class="col col-40">{{ point.point_type }}{{ point.green_points }}</div>
+					<div class="col col-40">{{ point.point_type }}{{ point.red_points }}</div>
+				</div>
+				<div class="col col-20"></div>
+				<div class="col col-40">{{ points.green_tot }}</div>
+				<div class="col col-40">{{ points.red_tot }}</div> 
+			</li>
+		</ul>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	</head>
+	<body>
+
+		<select name="test">
+			<option selected disabled>Company Size</option>
+			<option>60</option>
+			<option>67</option>
+		</select>
+		<script>
+			$(document).ready(function(){
+			$.ajax({
+				url: "/wrestlerlist/",
+				dataType: "jsonp",
+				success: function(msg){
+					alert(msg);
+				},
+				error: function(msg){
+					console.log(msg);
+					alert(msg.data);
+				} 
+			});
+		});
+		</script>
+	</body>
+</html>

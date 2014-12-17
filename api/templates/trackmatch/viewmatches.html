@@ -1,0 +1,166 @@
+{% extends 'trackmatch/base.html' %}
+{% block content %}
+        	<section id="content-wrapper">
+
+				<section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>View Matches</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <article>
+
+                	<div class="wrapper" style="min-height:400px;">
+						<h4 class="text-center">{{ wrestler_name }}</h4>
+						<h5 class="text-center"><a href="/editwrestler/{{ wrestler_id }}/">Edit Wrestler Details</a></h5>
+									<a href="/teamview" class="button-link"><button class="btn btn-block btn-primary">BACK to Teamview</button></a>
+						<table class="table table-condensed table-striped">
+							<tbody>
+								<thead>
+									<tr>
+										<th>
+											Match
+										</th>
+										<th>
+											Meet
+										</th>
+										<th>
+											Delete
+										</th>
+									</tr>
+								</thead>
+									{% for match in matches %}
+									<tr>
+										<td>
+											{{ match.matchstyle }} - {{ match.matchweight }}lbs <br /><a href="/view_match/{{ match.id }}/">View Match</a>
+										</td>
+										<td>
+											{{ match.created_at }}
+											<br />
+											{{ match.meet.name }}
+											<br />
+											vs. {{ match.opponent.name }}
+										</td>
+										<td>
+											<a style="color:#fff;" href="/deletematch/{{ wrestler_id }}/{{ match.id }}" class="btn btn-danger" role="button">Delete</a>
+										</td>
+									</tr>
+
+									{% endfor %}
+							</tbody>
+						</table>
+
+						</div> <!-- end main content wrapper -->
+
+                    <div class="wrapper">
+
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2014</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Matside Stats</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
+		{% endblock %}
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
+
+
+		$(document).ready(function(){
+			$("#add-wrestler").on("submit", function(e){
+				e.preventDefault();
+				if ($("#wrestler").val().length < 1){
+					alert("Enter a new wrestler");
+				} else {
+					this.submit();
+				}
+			});
+			$("#save").on("click", function(){
+					alert("HERE");
+				});
+			$(".wrestler-edit").click(function(){
+				//place layover and form for editing
+				$("#wrestler-layover").css("display", "block")
+				$("#wrestler-profile").css("display", "block")
+				$("#wrestler-layover").css("visibility", "visible")
+				$("#wrestler-profile").css("visibility", "visible")
+				wid = $(this).attr("wrestlerid"); 
+				$.ajax({
+					type:"GET",
+					url:"/getwrestler/"+wid+"/",
+					async: true,
+					success: function(info){
+						$("#wrestler-profile").append(info);
+					}
+				});
+			});
+			$("#wrestler-layover").click(function(){
+				$(this).fadeOut(200);
+			});
+			$(".green").click(function(){
+				wid = $(this).attr("wrestlerid")
+				window.location.href = "/start_match/"+wid+"/";
+			});
+			$("#save2").on("click", function(){
+					alert("Save...");
+					wrestler_id = $("#form-wrestler_id").val();
+					teamlevel = $("#form-teamlevel").val();
+					weight = $("#form-weight").val();
+					currentmeet = $("#form-currentmeet").val();
+					$.ajax({
+						type: "POST",
+						url: "/savewrestler/",
+						data: "wrestler_id="+wrester_id+"&teamlevel="+teamlevel+"&weight="+weight+"&currentmeet="+currentmeet,
+						async: true,
+						success: function(msg){
+						if (msg == "saved") {
+							$("#save").html('Saved');
+							alert("Saved");
+							$("#wrestler-layover").click();
+						} else {
+							$("#save").replaceWith('<button name="close" id="close" class="btn btn-danger">Close</button>');
+						}
+					}
+				});	
+			});
+		});
+	</script>
+
+</html>

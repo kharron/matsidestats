@@ -1,0 +1,52 @@
+angular.module('starter.controllers', [])
+
+.controller('loginCtrl', function($scope, $http, $location) {
+	// Put Login stuff here
+		// Globals
+		var base_url = 'http://www.matsidestats.com/';
+		/* 
+		 * Module - Login Module
+		 */
+
+		// initial settings
+		$scope.login_text = "Login";
+		// Take login info and validate it
+		$scope.login = function() {
+			$scope.login_text = "Logging In...";
+			$scope.top_header = "Login View";
+			
+			$http({ method: 'POST',
+				url: 'http://www.matsidestats.com/loginapi/', 
+				data: 'username='+ $scope.username + '&password='+ $scope.password,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).
+				success(function(data, status, headers, config){
+					$scope.login_text = "Good Job";
+					console.log("Successful Connectioin");
+					console.log(data);
+					if (data){
+						window.localStorage['apikey'] = data;
+						$location.path('/teamview');
+					}
+
+					// Incorrect Login
+					if (data == 'nousername'){
+						$scope.login_text = "Incorrect Login";
+					}
+				}).
+				error(function(data, status, headers, config){
+					console.log("Unsuccessful Login");
+				});
+		}
+})
+
+.controller('FriendsCtrl', function($scope, Friends) {
+  $scope.friends = Friends.all();
+})
+
+.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
+  $scope.friend = Friends.get($stateParams.friendId);
+})
+
+.controller('AccountCtrl', function($scope) {
+});

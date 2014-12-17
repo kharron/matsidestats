@@ -1,58 +1,263 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Matside Stats</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/photoswipe/photoswipe.css" />
-    <link rel="stylesheet" type="text/css" href="/static/font/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" /> 
-</head>
-<body>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
 
-	<div class="screen">
-		<div class="menu">
-			<ul class="ulMenu">
-				<li><a href="javascript:menu('1');" ><i class="fa fa-home"></i><span>Home</span></a></li>
-				<li><a href="javascript:menu('2');"><i class="fa fa-info"></i><span>Login</span></a></li>
-				<li><a href="javascript:menu('3');"><i class="fa fa-file-text-o"></i><span>Team View</span></a></li>
-				<li><a href="javascript:menu('4');"><i class="fa fa-picture-o"></i><span>About Us</span></a></li>
-				<li><a href="javascript:menu('5');"><i class="fa fa-map-marker"></i><span>Contact</span></a></li>
-			</ul>
-		</div>
-		<div class="content">
-			<div id="body">
-				<div class="headerBack">
-					<div id="header" class="borderRadius">
-						<a class="button" href="#"><div class="btn"><i class="fa fa-reorder" style="display: inline;"></i></div></a>
-						<h1 class="sectionTitle"></h1>
-						<a id="location" style="display:none;" href="javascript:alert('Button only')">
-							<div class="location"><i id="posIcon" class="fa fa-location-arrow"></i></div>
-						</a>
-					</div>
-				</div>
-				<div id="wrapper">
-					<div class="scroller">
-						<div id="sectionContent"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="/static/js/bootstrap.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/js/menu.js"></script>
-	<script type="text/javascript" src="/static/js/fastclick.js"></script>
-	<script type="text/javascript" src="/static/js/iscroll.js"></script>
-	<script type="text/javascript" src="/static/js/photoswipe/klass.min.js"></script>
-	<script type="text/javascript" src="/static/js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
-	<script id="test" type="text/javascript" src="/static/js/index.js"></script>
-	<script type="text/javascript">
-	    app.initialize();
+    <!-- [portable options] -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- [SEO] -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<meta name="author" content="Kharron Reid">
+
+    <title>Matside Stats</title>
+
+    <!-- [loading stylesheets] -->
+    <link type="text/css" rel="stylesheet" href="/static/css/style-template.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/flexslider.css" />
+
+    <!-- [loading fonts] -->
+    <script src="http://use.edgefonts.net/istok-web.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+
+    <!-- [loading scripts] -->
+
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.touchswipe.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
 	</script>
-</body>
+
+    </head>
+
+    <body>
+
+    	<section id="page-wrapper">
+
+        	<section id="menu-wrapper">
+
+                <div id="menu-search">
+                </div>
+
+                <ul class="menu">
+
+                    <li class="icon home">
+                        <a href="/index">
+                            <span class="menu-li-title">Home</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon box">
+                        <a href="/register/">
+                            <span class="menu-li-title">Register Free</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon info">
+                        <a href="/register/">
+                            <span class="menu-li-title">Login</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+<!--
+                    <li id="a-submenu-1" class="icon plus">
+
+                        <a href="/register/">
+                            <span class="menu-li-title">Team View</span>
+                            <img class="menu-li-arrow-submenu" src="/static/images/icons/submenu.png" alt="" />
+                        </a>
+
+                        <ul id="submenu-1">
+                        	<li>
+                                <a href="index.html">
+                                    <span class="menu-li-title">Slider</span>
+                                    <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="index.html">
+                                    <span class="menu-li-title">Sidebar Menu</span>
+                                    <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+
+						</li> --> <!-- #submenu-1 -->
+
+                    <li class="icon blog">
+                        <a href="/teamview/">
+                            <span class="menu-li-title">Team View</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon book">
+                        <a href="/managemeets/">
+                            <span class="menu-li-title">Manage Meets</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon mail">
+                        <a href="contact.php">
+                            <span class="menu-li-title">Contact</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+					<!--
+                    <li class="icon star">
+                        <a href="http://themeforest.net/user/lukepostulka/portfolio">
+                            <span class="menu-li-title"></span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+					-->
+                </ul> <!-- .menu -->
+
+            </section> <!-- #menu-wrapper -->
+
+            <section id="sidebar-wrapper">
+
+            	<h4 id="sidebar-title">Second sidebar</h4>
+
+                <div class="widget">
+                	<h4>Text widget support</h4>
+            		<p>This sidebar is widget ready. You can place here anything you want to - contact form, latest posts, newsletter subscribtion, categories, featured authors, best products for this month - it's completly up to you!</p>
+                </div>
+
+                <div class="widget">
+                	<h4>Latest posts widget</h4>
+                    <ul>
+                        <li class="item"><a href="#">Let's talk about design</a></li>
+                        <li class="item"><a href="#">Random blog title which is quite long so it makes three lines</a></li>
+                        <li class="item"><a href="#">Follow me on ThemeForest</a></li>
+                        <li class="item"><a href="#">Use colors! Everywhere!</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                	<h4>Contact widget</h4>
+                    <ul>
+                        <li class="item"><a href="tel:45132141567">Call us</a></li>
+                        <li class="item"><a href="mailto:yourmail@company.cc">Mail to us</a></li>
+                        <li class="item"><a href="http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=New+York&sll=49.891235,-97.15369&sspn=47.259509,86.923828&ie=UTF8&hq=&hnear=New+York,+United+States&ll=40.714867,-74.005537&spn=0.019517,0.018797&z=14&iwloc=near&output=embed">Visit us</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                	<h4>Share widget</h4>
+                    <ul class="social">
+
+                        <li class="blogger"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="wordpress"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="thumblr"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="html"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+
+                        <!-- find the right icons at https://github.com/joshuasortino/Publicons -->
+
+                    </ul>
+                </div>
+
+            </section> <!-- #sidebar-wrapper -->
+
+        	<section id="content-wrapper">
+
+                <section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>Matside Stats</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <section id="slider">
+                    <ul class="slides">
+                        <li><img src="/static/images/mat-light-finals-600x400.jpg" alt="" /></li>
+                        <li><img src="/static/images/states-600x400.jpg" alt="" /></li>
+                        <li><img src="/static/images/quote-600x400.jpg" alt="" /></li>
+                    </ul>
+                </section> <!-- #slider -->
+
+                <article>
+
+                	<div class="wrapper">
+
+                    	<span class="post-date"></span>
+                        <h2>Matside Stats</h2>
+
+                        <p class="prologue">A completely free application designed to track and save wrestling statistics. </p>
+									<a href="/login" class="button-link"><button class="btn btn-block btn-primary">START TRACKING</button></a>
+
+                    </div>
+
+                    <table class="contact">
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-web.png" alt="" /><span><a href="#">http://matsidestats.com/</a></span></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-mail.png" alt="" /><span>info@matsidestats.com</span></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-home.png" alt="" /><span>Oceanside, CA</span></td>
+                        </tr>
+
+                    </table>
+
+                    <div class="wrapper">
+
+                        <p>Footer Text</p>
+						<p><strong>More Footer Text</strong></p>
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2014</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Matside Stats</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
 </html>

@@ -1,0 +1,16 @@
+<ion-view title="{{ wrestler_name }}">
+  <ion-content has-header="true" padding="true">
+	<button ui-sref="roster.wrestler-details({ wrestler_id: wrestlerid })" class="button button-block button-dark">Edit {{ wrestler_name }} details</button>
+	<div style="text-align:center;"><h2>Matches</h2></div>
+		<ul class="list">
+			<li ui-sref="roster.view_match({ match_id: match.id, wrestler_name: wrestler_name })" class="item view_match" data-match-id="{{ match.id }}" ng-repeat="match in matches">
+				{{ match.wrestler2_name }} of {{ match.wrestler2_school }}
+				<br />
+				{{ match.created_at }} <br />
+				{{ match.match_weight }}lbs <br />
+				<span style="font-weight: bold;">Meet: </span>{{ match.meet.name }} <br />
+			</li>
+		</ul>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,26 @@
+			<table class="table table-condensed table-striped">
+				<tr>
+				<td style="width:20px;"></td>
+				<td>
+				Green
+				</td>
+				<td>
+				Red
+				</td>
+				</tr> 
+				<tr ng-repeate="point in points">
+				<td style="color: #fff;background-color:blue;">1</td>
+				<td>
+					{{ match.green_points }}
+				</td>
+				<td>
+					{{ match.red_points }}
+				</td>
+				</tr>
+				<tr>
+				<td></td>
+				<td> {{ green_tot }} </td>
+				<td> {{ red_tot }} </td>
+				</tr>
+			</table>
+

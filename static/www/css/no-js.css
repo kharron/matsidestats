@@ -1,0 +1,21 @@
+.animation { visibility:visible; }
+
+figure iframe {
+	width:100% !important;
+	height:auto !important;
+}
+
+.carousel-slider > div { display:none; }
+.carousel-slider > div:first-child, .carousel-slider.gallery-slider > div:nth-child(2), .carousel-slider.gallery-slider > div:nth-child(3), .carousel-slider.gallery-slider > div:nth-child(4) { display:block; }
+
+#header .navbar {
+	position:static;
+	width:auto;
+}
+#header .header-content { padding-top:60px; }
+
+@media (max-width: 767px) {
+	
+	.carousel-slider.gallery-slider > div:nth-child(2), .carousel-slider.gallery-slider > div:nth-child(3), .carousel-slider.gallery-slider > div:nth-child(4) { display:none; }
+	
+}

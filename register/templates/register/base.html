@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+
+    <!-- [portable options] -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- [SEO] -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Lukas Postulka, http://themeforest.net/user/lukepostulka">
+
+    <title>Gamma - Mobile Premium Template</title>
+
+    <!-- [loading stylesheets] -->
+    <link type="text/css" rel="stylesheet" href="/static/css/style-template.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/flexslider.css" />
+
+    <!-- [loading fonts] -->
+    <script src="http://use.edgefonts.net/istok-web.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+	<link href="/static/css/bootstrap.css">
+
+    <!-- [loading scripts] -->
+
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.touchswipe.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src+"/static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+			$(window).load(function() {
+				$('#slider').flexslider({
+					animation: "slide",
+					directionNav: true,
+					animationLoop: false,
+					controlNav: false,
+					slideToStart: 1,
+					slideshow: true,
+					animationDuration: 300,
+					start: function(){
+						 $('#slider').animate({opacity: 1}, 750);
+					},
+				});
+			});
+	</script>
+
+    </head>
+
+    <body>
+
+    	<section id="page-wrapper">
+
+        	<section id="menu-wrapper">
+
+                <div id="menu-search">
+                	<input id="menu-search-input-text" type="text" placeholder="Search..." />
+					<input id="menu-search-input-submit" type="submit" value="" />
+                </div>
+
+                <ul class="menu">
+
+                    <li class="icon home">
+                        <a href="/index">
+                            <span class="menu-li-title">Home</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon box">
+                        <a href="/register/">
+                            <span class="menu-li-title">Register</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon info">
+                        <a href="aboutus.html">
+                            <span class="menu-li-title">About us</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li id="a-submenu-1" class="icon plus">
+
+                        <a href="#">
+                            <span class="menu-li-title">Features</span>
+                            <img class="menu-li-arrow-submenu" src="/static/images/icons/submenu.png" alt="" />
+                        </a>
+
+                        <ul id="submenu-1">
+                        	<li>
+                                <a href="index.html">
+                                    <span class="menu-li-title">Slider</span>
+                                    <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="index.html">
+                                    <span class="menu-li-title">Sidebar Menu</span>
+                                    <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li> <!-- #submenu-1 -->
+
+                    <li class="icon blog">
+                        <a href="blog.html">
+                            <span class="menu-li-title">Blog</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon book">
+                        <a href="typography.html">
+                            <span class="menu-li-title">Typography</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon mail">
+                        <a href="contact.php">
+                            <span class="menu-li-title">Contact</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                    <li class="icon star">
+                        <a href="http://themeforest.net/user/lukepostulka/portfolio">
+                            <span class="menu-li-title">Buy Gamma</span>
+                            <img class="menu-li-arrow" src="/static/images/icons/arrow-forward.png" alt="" />
+                        </a>
+                    </li>
+
+                </ul> <!-- .menu -->
+
+            </section> <!-- #menu-wrapper -->
+
+            <section id="sidebar-wrapper">
+
+            	<h4 id="sidebar-title">Second sidebar</h4>
+
+                <div class="widget">
+                	<h4>Text widget support</h4>
+            		<p>This sidebar is widget ready. You can place here anything you want to - contact form, latest posts, newsletter subscribtion, categories, featured authors, best products for this month - it's completly up to you!</p>
+                </div>
+
+                <div class="widget">
+                	<h4>Latest posts widget</h4>
+                    <ul>
+                        <li class="item"><a href="#">Let's talk about design</a></li>
+                        <li class="item"><a href="#">Random blog title which is quite long so it makes three lines</a></li>
+                        <li class="item"><a href="#">Follow me on ThemeForest</a></li>
+                        <li class="item"><a href="#">Use colors! Everywhere!</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                	<h4>Contact widget</h4>
+                    <ul>
+                        <li class="item"><a href="tel:45132141567">Call us</a></li>
+                        <li class="item"><a href="mailto:yourmail@company.cc">Mail to us</a></li>
+                        <li class="item"><a href="http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=New+York&sll=49.891235,-97.15369&sspn=47.259509,86.923828&ie=UTF8&hq=&hnear=New+York,+United+States&ll=40.714867,-74.005537&spn=0.019517,0.018797&z=14&iwloc=near&output=embed">Visit us</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                	<h4>Share widget</h4>
+                    <ul class="social">
+
+                        <li class="blogger"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="wordpress"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="thumblr"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+                        <li class="html"><a href="#"><img src="http://placehold.it/64x64" alt="" /></a></li>
+
+                        <!-- find the right icons at https://github.com/joshuasortino/Publicons -->
+
+                    </ul>
+                </div>
+
+            </section> <!-- #sidebar-wrapper -->
+
+        	<section id="content-wrapper">
+
+                <section id="header">
+
+                    <div id="header-left">
+                        <a href="#" id="a-menu"><img src="/static/images/icons/menu.png" alt="Menu" /></a>
+                    </div>
+
+                    <div id="header-title">
+                        <h1>Gamma</h1>
+                    </div>
+
+                    <div id="header-right">
+                        <a href="#" id="a-sidebar"><img src="/static/images/icons/menu.png" alt="Sidebar" /></a>
+                    </div>
+
+                </section> <!-- #header -->
+
+                <section id="slider">
+                    <ul class="slides">
+                        <li><img src="http://placehold.it/600x400" alt="" /></li>
+                        <li><img src="http://placehold.it/600x400" alt="" /></li>
+                        <li><img src="http://placehold.it/600x400" alt="" /></li>
+                    </ul>
+                </section> <!-- #slider -->
+
+                <article>
+
+                	<div class="wrapper">
+
+                    	<span class="post-date">27 JUNE 2013, 14:13</span>
+                        <h2>Welcome to our website</h2>
+
+                        <p class="prologue">This is your index page. There's big <strong>slider</strong> located in the top of this page which supports <strong>swipe gestues</strong> on mobile phones. I hope you enjoy my brand new template called <strong>Gamma!</strong></p>
+
+                    </div>
+
+                    <table class="contact">
+                    	<tr>
+                        	<td><a href="tel:450654331564"><img src="/static/images/icons/big-tel.png" alt="" /></a></td>
+                            <td><a href="mailto:mail@company.org"><img src="/static/images/icons/big-mail.png" alt="" /></a></td>
+                            <td><a href="http://themeforest.net/user/lukepostulka" target="_blank"><img src="/static/images/icons/big-web.png" alt="" /></a></td>
+                            <td><a href="http://themeforest.net/user/lukepostulka/portfolio" target="_blank"><img src="/static/images/icons/big-cart.png" alt="" /></a></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-web.png" alt="" /><span><a href="http://themeforest.net/user/lukepostulka">http://lukepostulka.net/</a></span></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-mail.png" alt="" /><span>support@lukepostulka.net</span></td>
+                        </tr>
+
+                        <tr class="info">
+                        	<td colspan="4"><img src="/static/images/icons/small-home.png" alt="" /><span>12345 Street Some Lane, New York</span></td>
+                        </tr>
+
+                    </table>
+
+                    <div class="wrapper">
+
+                        <p>Gamma is crystal-clear mobile template. It has pure typography and blogging spirit. If you like modern and clean flat design look no further. <strong>Gamma</strong> has big sidebar menu, so reaching your favorit pages is therefore very easy.</p>
+						<p>One again I hope you enjoy my brand new template. If you feel to it you can follow me on <a href="http://themeforest.net/user/lukepostulka/follow" target="_blank">ThemeForest</a>, there's always good stuff coming up so <strong>stay in touch!</strong></p>
+
+						<p><a href="blog.html"><input type="button" value="Read Blog" /></a><a href="http://themeforest.net/user/lukepostulka/portfolio?ref=lukepostulka"><input type="button" value="Buy Me" /></a></p>
+
+                    </div>
+
+                </article> <!-- #post -->
+
+                <section id="footer">
+                    <div id="footer-left">
+                        <span>&copy; Copyright 2013</span>
+                    </div>
+
+                    <div id="footer-right">
+                        <span>Gamma Mobile Template</span>
+                    </div>
+                </section> <!-- #footer -->
+
+            </section> <!-- #content-wrapper -->
+    	</section> <!-- #page-wrapper -->
+    </body>
+</html>
