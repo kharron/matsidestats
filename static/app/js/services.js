@@ -47,7 +47,7 @@ angular.module('starter.services', [])
 												var meetrow = meetres.rows.item(0);
 												var meet_id = meetrow['id'];
 												// insert new match info
-												tx.executeSql("insert into matches (wrestler1, match_complete, match_weight, wrestler2_name, match_style, meet, created_at) Values(?,?,?,?,?,?,?)", [wid, 0,row['weight'], curr_opponent, 'folk style', meet_id, curTime.currentTime()]);
+												tx.executeSql("insert into matches (wrestler1, wrestler1_name, match_complete, match_weight, wrestler2_name, match_style, meet, created_at) Values(?,?,?,?,?,?,?,?)", [wid, wrestler.wrestler1,  0,row['weight'], curr_opponent, 'folk style', meet_id, curTime.currentTime()]);
 												tx.executeSql("select * from matches where wrestler1 = ? and match_complete = 0", [wid], function(tx, res ){
 												var new_match = res.rows.item(0);
 												data = [wrestler, new_match, 'new'];
@@ -326,30 +326,32 @@ angular.module('starter.services', [])
 									var green_tot=0;
 									var red_tot=0;
 									db.transaction(function(tx){
-										tx.executeSql("select * from matchscore where matches_id = ?", [match_id], function(tx, res){
-											var scores = new Array();
-											for (i=0; i<res.rows.length; i++){
-												row = res.rows.item(i);
-												if (row['color'] == 'green'){
-													green_point = row['points'];
-													red_point = 0;
-													green_tot += row['points'];
-												} else {
-													red_point = row['points'];
-													green_point = 0;
-													red_tot += row['points'];
+										tx.executeSql("select * from matches where id = ?", [match_id], function(tx, res){
+											match = res.rows.item(0);
+											tx.executeSql("select * from matchscore where matches_id = ?", [match_id], function(tx, res){
+												var scores = new Array();
+												for (i=0; i<res.rows.length; i++){
+													row = res.rows.item(i);
+													if (row['color'] == 'green'){
+														green_point = row['points'];
+														red_point = 0;
+														green_tot += row['points'];
+													} else {
+														red_point = row['points'];
+														green_point = 0;
+														red_tot += row['points'];
+													}
+													scores.push({
+														period: row['period'],
+														point_type: row['point_code'],
+														green_points: green_point,
+														red_points: red_point
+													});
 												}
-												scores.push({
-													period: row['period'],
-													point_type: row['point_code'],
-													green_points: green_point,
-													red_points: red_point
-												});
-											}
-											var data = [{'match_info': scores, 'green_tot': green_tot, 'red_tot': red_tot}];
-											
-											deferred.resolve(data);
-										})
+												var data = [{'match': match, 'match_info': scores, 'green_tot': green_tot, 'red_tot': red_tot}];
+												deferred.resolve(data);
+											});
+										});
 									});
 								return deferred.promise;
 								}
@@ -596,7 +598,13 @@ angular.module('starter.services', [])
 												});
 										return deferred.promise;
 									}, 
-
+		setOpponent: function(oppo_name, wid){
+									 var db = $rootScope.db;
+									 var deferred = $q.defer();
+									 db.transaction(function(tx){
+										 tx.executeSql("UPDATE wrestlers set current_opponent = ? where id = ?", [oppo_name, wid]);
+									 });
+								 } 
 	}
 })
 .factory('MeetsDb', function($rootScope, $q){
