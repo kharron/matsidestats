@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', [])
 
 .controller('initialCtrl', function($ionicPlatform, $scope, $state, $rootScope, TeamDb, $ionicPopup){
   $ionicPlatform.ready(function() {
@@ -433,7 +433,7 @@ function manage_ui_neutral(){
 
 		// Refresh page
 			try{
-				$scope.isOnline = ngCordova.getNetwork();
+				//$scope.isOnline = ngCordova.getNetwork();
 				if ($scope.isOnline != 'none'){$scope.isOnline = true} else {$scope.isOnline = false}
 				console.log("ONLINE: " + $scope.connectiontype);
 			} catch (e) {
