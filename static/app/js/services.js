@@ -105,7 +105,7 @@ angular.module('starter.services', [])
 								var green_tot = 0;
 								var red_tot = 0;
 								var lastPt = 0;
-								var period = 0;
+								var period = 1;
 								for (i=0; i<res.rows.length; i++){
 									row = res.rows.item(i);
 									if (row['color'] == 'green'){
@@ -551,7 +551,11 @@ angular.module('starter.services', [])
 											db.transaction(function(tx){
 												tx.executeSql("insert into wrestlers (teams_id, name) Values(?,?)", [team_id, wrestler_name]);
 												tx.executeSql("select * from wrestlers where teams_id = ?", [team_id], function(tx, res ){
-												deferred.resolve(res.rows);
+													wrestlers = res.rows;
+													tx.executeSql("select * from wrestlers where teams_id = ? order by id desc limit 0,1", [team_id], function(tx, res){
+														results = [wrestlers, res.rows.item(0)];
+														deferred.resolve(results);
+													});
 											});
 										});
 										return deferred.promise;

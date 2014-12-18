@@ -1,13 +1,13 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('initialCtrl', function($ionicPlatform, $scope, $state, $stateParams, $rootScope, TeamDb, $ionicPopup){
+.controller('initialCtrl', function($ionicPlatform, $scope, $state, $rootScope, TeamDb, $ionicPopup){
   $ionicPlatform.ready(function() {
 		/*
 		 * Check if this is the first time logging in.  Make a new team and username
 		 */
-		$scope.team = {};
 		$scope.add_team_btn = "Add Team";
 
+		$scope.team = {};
 		var db = $rootScope.db;
 		var has_team = 0;
 		db.transaction(function(tx) {
@@ -54,11 +54,6 @@ angular.module('starter.controllers', ['ngCordova'])
 					$state.go('roster.teamview')
 			});
 		}
-		if ($stateParams.email && $stateParams.teamname){
-			$scope.team.username = $stateParams.email;
-			$scope.team.name = $stateParams.teamname;
-			$scope.addTeam();	
-		}
 	});
 })
 
@@ -89,6 +84,7 @@ angular.module('starter.controllers', ['ngCordova'])
 		})
 	}
 	$scope.period = 1; 
+	console.log("First Period: " + $scope.period);
 	$scope.start_match();
 
 	/* In match stuff 
@@ -166,6 +162,7 @@ angular.module('starter.controllers', ['ngCordova'])
 			$scope.green_pts = data[0];
 			$scope.red_pts = data[1]; 
 			lastPt = data[2];
+			console.log("Period: " + data[3]);
 			$scope.period = data[3];
 			var match_status = match_status
 				if(lastPt != 0){ 
@@ -465,8 +462,9 @@ function manage_ui_neutral(){
 		$scope.getWrestlers();
 
 		$scope.addWrestler = function() {
-			console.log("Add Wrestler: " + $scope.addwrestler.name);
-			WrestlersDb.addWrestler($scope.addwrestler.name).then(function(rows){
+			WrestlersDb.addWrestler($scope.addwrestler.name).then(function(wrestlerArr){
+				rows = wrestlerArr[0];
+				thisWrestler = wrestlerArr[1];
 				wrestlers = [];
 				for (i=0; i<rows.length; i++){
 					// form a json blob to display wrestlers
@@ -485,6 +483,7 @@ function manage_ui_neutral(){
 					}); 
 				}
 				$scope.wrestlers = wrestlers;
+				$state.go('roster.wrestler-details', {'wrestler_id': thisWrestler['id']});
 
 			});
 		}
