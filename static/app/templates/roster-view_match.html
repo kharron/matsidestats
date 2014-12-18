@@ -6,8 +6,8 @@
 				<h2>Match Information Below</h2>
 				<div class="row">
 					<div class="col col-20">Period</div>
-					<div class="col col-40">Green</div>
-					<div class="col col-40">Red</div>
+					<div class="col col-40">{{ match.wrestler1_name }}</div>
+					<div class="col col-40">{{ match.wrestler2_name }}</div>
 				</div>
 				<div class="row" ng-repeat="point in points">
 					<div class="col col-20">{{ point.period }}</div>
