@@ -1,7 +1,7 @@
 <!--
 -->
 <ion-view title="Roster Teamview">
-  <ion-content has-header="true" padding="true" has-bouncing="true">
+  <ion-content class="teamview-bg" has-header="true" padding="true" has-bouncing="true">
 		<ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh_roster(true)"> </ion-refresher>
 			<div class="list">
 				<div class="item item-input-inset">
@@ -22,7 +22,6 @@
 				</div>
 				<div class="item item-divider">
 
-					{{ wrestler.match_button }}
 					<action-button matches_complete="wrestler.match_button" wrestler="wrestler"></action-button>
 				</div>
 			</div>
