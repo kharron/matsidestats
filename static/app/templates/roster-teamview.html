@@ -19,6 +19,8 @@
 				</div>
 				<div class="item item-text-wrap">
 					{{ wrestler.weight }} @ {{ wrestler.current_meet }}
+					<br />
+					<input type="text" placeholder="click to add opponent" ng-click="addOpponent(wrestler.id)" ng-model="wrestler.current_opponent" />
 				</div>
 				<div class="item item-divider">
 

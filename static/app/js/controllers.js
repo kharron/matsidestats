@@ -423,7 +423,7 @@ function manage_ui_neutral(){
 	});
 })
 
-.controller('rosterCtrl', function($ionicPlatform, $scope, $state, WrestlersDb, Roster, $ionicPlatform, $cordovaNetwork, $ionicModal, $rootScope) {
+.controller('rosterCtrl', function($ionicPlatform, $scope, $state, WrestlersDb, Roster, $ionicPlatform, $cordovaNetwork, $ionicModal, $rootScope, $ionicPopup) {
   $ionicPlatform.ready(function() {
 
 
@@ -487,7 +487,37 @@ function manage_ui_neutral(){
 
 			});
 		}
-	});
+
+
+		$scope.opponent = {name: ''};
+		$scope.addOpponent = function(wid){
+		var myPopup = $ionicPopup.show({
+					template: '<input type="text" ng-model="opponent.name" />',
+					title: 'Enter Next Opponent',
+					subTitle: 'Enter the current or next opponent',
+					scope: $scope,
+					buttons: [
+					{ text: 'Cancel' },
+					{
+					text: '<b>Save</b>',
+					type: 'button-positive',
+						onTap: function(e) {
+						if (!$scope.opponent.name) {
+						//don't allow the user to close unless he enters wifi password
+						e.preventDefault();
+						} else {
+						return $scope.opponent.name;
+						}
+						}
+					}
+				]
+			});
+			myPopup.then(function(oppo_name) {
+				WrestlersDb.setOpponent(oppo_name, wid);
+				console.log("Next Opponsent: " + wid + " " + oppo_name);
+			});
+		}
+	})
 })
 
 .controller('managemeetsCtrl', function($ionicPlatform, $scope, $state, $stateParams, Meets) {
@@ -591,9 +621,7 @@ function manage_ui_neutral(){
 .controller('viewmatchCtrl', function($ionicPlatform, $scope, ViewMatch, $state, $stateParams){
   $ionicPlatform.ready(function() {
 		var id = $stateParams.match_id;
-		var wrestler_name = $stateParams.wrestler_name
-		var base_url = 'http://www.matsidestats.com/';
-		$scope.wrestler_name = wrestler_name;
+		var base_url = 'http://api.matsidestats.com/';
 		var api_key = window.localStorage['apikey'];
 
 		$('.navback').css("visibility", "hidden");
@@ -604,6 +632,7 @@ function manage_ui_neutral(){
 			$scope.green_tot = data['green_tot']
 			$scope.red_tot = data['red_tot']
 			$scope.points = data['match_info'];
+			$scope.match = data['match'];
 		});
 
 		$scope.gotoTeamview = function(){
