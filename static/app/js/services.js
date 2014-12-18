@@ -333,13 +333,18 @@ angular.module('starter.services', [])
 												for (i=0; i<res.rows.length; i++){
 													row = res.rows.item(i);
 													if (row['color'] == 'green'){
-														green_point = row['points'];
-														red_point = 0;
+														green_point = row['point_code']+row['points'];
+														red_point = '';
 														green_tot += row['points'];
 													} else {
-														red_point = row['points'];
-														green_point = 0;
+														red_point = row['point_code']+row['points'];
+														green_point = '';
 														red_tot += row['points'];
+													}
+													point_code = row['point_code'];
+													if (point_code=='nofall'){
+														green_point = '';
+														red_point = '';
 													}
 													scores.push({
 														period: row['period'],

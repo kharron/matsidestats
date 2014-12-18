@@ -632,7 +632,9 @@ function manage_ui_neutral(){
 			$scope.green_tot = data['green_tot']
 			$scope.red_tot = data['red_tot']
 			$scope.points = data['match_info'];
-			$scope.match = data['match'];
+			$scope.match = data['match']
+			$scope.match_extras = JSON.parse(data['match']['match_extras']);
+			console.log($scope.match);
 		});
 
 		$scope.gotoTeamview = function(){
