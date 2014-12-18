@@ -24,7 +24,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
 		//var db = window.sqlitePlugin.openDatabase({name: 'matsidestats.db'});
 		// Create a unlimited database for offline everything
 	//	var db = window.sqlitePlugin.openDatabase("matsidestats", "", "Matside Stats Local DB", 1024*1024*512);
-		var db = window.openDatabase("matsidestatsv1", "1.0", "Matside Stats Local DB", -1);
+		try {
+			var db = window.openDatabase("matsidestatsv1", "1.0", "Matside Stats Local DB", 1024*1024*50);
+		} catch(err){
+			// Use the internet instead
+		}
 
 		function createTables(db){
 			db.transaction(function(tx) {
@@ -71,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
 			templateUrl: 'templates/team-initial.html',
     })
     .state('team.signup', {
-			url: '/signup?teamname&email',
+			url: '/signup',
       views: {
         'team-view': {
           templateUrl: 'templates/team-signup.html',
