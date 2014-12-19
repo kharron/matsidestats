@@ -1,0 +1,58 @@
+<ion-view title="Track Match">
+  <ion-content class="padding">
+	<div class="row">
+		<div class="col col-45" style="text-align: center;"> {{ wrestler1 }} </div>
+		<div class="col col-10" style="text-align: center;"> VS.  </div>
+		<div class="col col-45" style="text-align: center;"> {{ wrestler2 }} </div>
+	</div>
+	<div class="row">
+		<button class="button button-block button-dark" ng-click="endMatch('nofall')">End Match</button>
+	</div>
+	<div class="row">
+		<div class="col col-50" style="float: left;">
+			<i ng-click="periodDn()" class="ion-minus-circled" style="font-size: 30px;"></i><span style="margin-left: 15px; margin-right: 15px;font-size:35px;">{{ period }}</span><i ng-click="periodUp()" class="ion-plus-circled" style="font-size: 30px;"></i>
+		</div>
+		<!-- 
+		<div class="col col-33">
+			Time 2:00
+		</div>
+		-->
+		<div class="col col-50">
+			<span style="font-size: 30px; color: red;float: right;" ng-click="undoPoints()">Undo</span>
+		</div>
+	</div>
+	<!-- Scoreboard -->
+	<style type="text/css">
+		.button { min-width: 20px; }
+	</style>
+	<div class="row">
+		<div class="col col-50" style="padding:0px;margin:0px;border: solid 1px 000;">
+					<button ptvalue="1" style="height:50px;width:40px;padding: 0;" class="button match-button button-assertive stall1">P1</button>
+					<button ptvalue="stall2" ng-click="points('stall', 'red')" style="padding:0;height:50px;width:30%;" class="button match-button button-assertive stall1">stall</button>
+					<input type="text" name="red" style="border: solid 1px #000; float: right;width:33%;margin: 0px 0px 20px 0px;padding: 0px;height:50px;text-align:center;font-size:40px;" ng-model="red_pts" />
+					<button ng-click="points('t2','red')" name="T-red" ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;background-color: #FF8533;color:#fff;" class="button match-button">T2</button>
+					<button ng-click="points('e1','red')" name="E-red" ptvalue="1" style="margin:0 0 10px;height:40px;width:48%;background-color: #FF6600;color:#fff;" class="button match-button">E1</button>
+					<button ng-click="points('r2','red')" name="R-red" ptvalue="2" style="margin:0 0 10px;height:40px;width:48%;background-color: #FF6600;color:#fff;" class="button match-button">R2</button>
+
+					<button ng-click="points('n2','red')" name="N-red" ptvalue="2" style="margin:0 3px 0 0;height:40px;width:48%;float:right;background-color: #FF6600; color:#fff;" class="button match-button">N2</button>
+					<button ng-click="points('n3','red')" name="N-red" ptvalue="3" style="margin:0 0 10px;height:40px;width:48%;float:right;background-color: #FF6600;color:#fff;" class="button match-button">N3</button>
+					<button ng-click="points('fall','red')" ptvalue="fall1" style="margin:0 0 10px;height:40px;width:100%;background-color: #CC5200;color:#fff;" class="button match-button">Fall</button>
+		</div>
+		<div class="col col-50" style="padding:0px;margin:0px;">
+					<input type="text" name="green" style="border: solid 1px #000; float: left;width:30%;margin-bottom: 20px;height:50px;text-align:center;font-size:40px;" ng-model="green_pts" />
+					<button ptvalue="stall2" ng-click="points('stall', 'green')" style="padding:0;margin: 0px;height:50px;width:30%;" class="button button-assertive match-button stall2">stall</button>
+					<button ptvalue="1" style="height:50px;width:30%;" class="button button-assertive match-button stall2">P1</button>
+					<button ng-click="points('t2', 'green')" name="T-green" ptvalue="2" style="margin:0 0 10px;height:40px;width:100%;background-color: #009999;color:#fff;" class="button match-button">T2</button>
+					<button ng-click="points('e1', 'green')" name="E-green" ptvalue="1" style="margin:0 0 10px;height:40px;width:48%;background-color: #006B6B; color:#fff;" class="button match-button">E1</button>
+					<button ng-click="points('r2', 'green')" name="R-green" ptvalue="2" style="margin:0 0 10px;height:40px;width:48%;background-color: #006B6B; color:#fff;" class="button match-button">R2</button>
+
+					<button ng-click="points('n2', 'green')" name="N-green" ptvalue="2" style="margin:0 0 0px 0px;height:40px;width:48%;float:left;background-color: #006B6B; color:#fff;" class="button match-button">N2</button>
+					<button ng-click="points('n3', 'green')" name="N-green" ptvalue="3" style="margin:0 3px 10px 0px;height:40px;width:48%;float:left;background-color: #006B6B; color:#fff;" class="button match-button">N3</button>
+					<button ng-click="points('fall', 'green')" ptvalue="fall2" style="margin:0 0 10px;height:40px;width:100%;background-color:#004C4C;color:#fff;" class="button match-button">Fall</button>
+		</div>
+	</div>
+
+
+  </ion-content>
+</ion-view>
+

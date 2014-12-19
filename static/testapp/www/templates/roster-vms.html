@@ -1,0 +1,13 @@
+<ion-view title="View Matches">
+  <ion-content has-header="true" padding="true">
+		<ul class="list">
+			<li ui-sref="roster.view_match({match_id: match.id})" ng-repeat="match in matches" class="item view_match" data-match-id="8">
+				{{ match.date }} <br />
+				{{ match.matchweight }} lbs <br />
+				{{ match.meet }} <br />
+				{{ match.opponent }}
+			</li>
+		</ul>
+  </ion-content>
+</ion-view>
+

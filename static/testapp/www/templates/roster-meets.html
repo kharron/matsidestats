@@ -1,0 +1,30 @@
+<ion-view title="Meets">
+  <ion-content has-header="true" padding="true">
+		<div class="card">
+			Before tracking a match, your wrestler must be wrestling at a meet of some sort.  <span style="font-weight: bold;">Examples of meets:</span> <span style="font-style: italic">Carlsbad Invitational, Pre-season Scrimmage, Birmingham Groves Dual Meet</span>
+		</div>
+		<div class="list">
+			<label class="item item-input">
+				<input type="text" placeholder="Meet Name" ng-model="meet.name">
+			</label>
+			<label class="item item-input">
+			<input type="text" placeholder="Address" ng-model="meet.address">
+			</label>
+			<label class="item item-input">
+			<input type="text" placeholder="Meet Date" ng-model="meet_date">
+			</label>
+		</div>
+		<button ng-click="addMeet()" class="button button-block button-positive">Add Meet</button>
+		<div class="list">
+			<div class="item item-icon-right" ng-repeat="meet in meets">
+				<i class="icon ion-gear-a" ui-sref="roster.meets_edit({meet_id: $index, id: meet.id})"></i>
+				<h2>{{ meet.name }}</h2>
+				{{ meet.address }}
+				<br />
+				{{ meet.meet_date }}
+				<br />
+			</div>
+		</div>
+  </ion-content>
+</ion-view>
+
